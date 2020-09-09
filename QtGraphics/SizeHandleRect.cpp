@@ -1,0 +1,1 @@
+#include "SizeHandleRect.h"

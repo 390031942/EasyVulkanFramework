@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7F77A6BF-8953-4A09-A0B8-2E673D850353}</ProjectGuid>
+    <Keyword>QtVS_v302</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <QtMsBuild Condition="'$(QtMsBuild)'=='' OR !Exists('$(QtMsBuild)\qt.targets')">$(MSBuildProjectDirectory)\QtMsBuild</QtMsBuild>
+    <ProjectName>EasyVulkanRenderer</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
+    <Message Importance="High" Text="QtMsBuild: could not locate qt.targets, qt.props; project may not build correctly." />
+  </Target>
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>F:\ProgrammingLib\Vulkan\1.1.126.0\glslang\;F:\ProgrammingLib\SDL2_ttf-2.0.15\include;F:\ProgrammingLib\SDL2-2.0.12\include;F:\ProgrammingLib\Boost;F:\ProgrammingLib\freetype\include;F:\ProgrammingLib\Vulkan\1.1.126.0\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\ProgrammingLib\Vulkan\1.1.126.0\Lib;F:\ProgrammingLib\SDL2_ttf-2.0.15\lib\x64;F:\ProgrammingLib\SDL2-2.0.12\lib\x64;F:\ProgrammingLib\Boost\stage\lib;F:\ProgrammingLib\freetype\win64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>F:\ProgrammingLib\Vulkan\1.1.126.0\glslang\;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\ProgrammingLib\Vulkan\1.1.126.0\Lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt_defaults.props')">
+    <Import Project="$(QtMsBuild)\qt_defaults.props" />
+  </ImportGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <QtInstall>5.14.0</QtInstall>
+    <QtModules>core;gui;widgets;xml</QtModules>
+  </PropertyGroup>
+  <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <QtInstall>5.14.1</QtInstall>
+    <QtModules>core;gui;widgets</QtModules>
+  </PropertyGroup>
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.props')">
+    <Import Project="$(QtMsBuild)\qt.props" />
+  </ImportGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;$(VULKAN_SDK)\glslang\build\glslang\Debug\glslangd.lib;$(VULKAN_SDK)\glslang\build\OGLCompilersDLL\Debug\OGLCompilerd.lib;$(VULKAN_SDK)\glslang\build\glslang\OSDependent\Windows\Debug\OSDependentd.lib;$(VULKAN_SDK)\glslang\build\hlsl\Debug\HLSLd.lib;$(VULKAN_SDK)\glslang\build\SPIRV\Debug\SPIRVd.lib;$(VULKAN_SDK)\Lib\vulkan-1.lib;$(VULKAN_SDK)\glslang\build\External\spirv-tools\source\Debug\SPIRV-Toolsd.lib;$(VULKAN_SDK)\glslang\build\External\spirv-tools\source\opt\Debug\SPIRV-Tools-optd.lib;$(VULKAN_SDK)\glslang\build\SPIRV\Debug\SPVRemapperd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BasicShapes.cpp" />
+    <ClCompile Include="BasicShapes\Polygon.cpp" />
+    <ClCompile Include="BasicShapes\Quadrangle.cpp" />
+    <ClCompile Include="BasicShapes\Triangle.cpp" />
+    <ClCompile Include="Drawable.cpp" />
+    <ClCompile Include="DrawTask.cpp" />
+    <ClCompile Include="EasyVulkanConfig.cpp" />
+    <ClCompile Include="EasyVulkanConsole.cpp" />
+    <ClCompile Include="EasyVulkanFontManager.cpp" />
+    <ClCompile Include="EasyVulkanFpsCalculator.cpp" />
+    <ClCompile Include="EasyVulkanPipeline.cpp" />
+    <ClCompile Include="EasyVulkanShaderCompiler.cpp" />
+    <ClCompile Include="EasyVulkanTextureManager.cpp" />
+    <ClCompile Include="EasyVulkanWindow.cpp" />
+    <ClCompile Include="Text.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Matrix\EasyVulkanMatrixState.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="VkObject.cpp" />
+    <ClCompile Include="VulkanDisplayWindow.cpp" />
+    <ClCompile Include="EasyVulkanRenderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="VulkanDisplayWindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="VulkanDisplayWindow.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="VulkanDisplayWindow.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BasicShapes.h" />
+    <ClInclude Include="BasicShapes\Drawable.h" />
+    <ClInclude Include="BasicShapes\Polygon.h" />
+    <ClInclude Include="BasicShapes\Quadrangle.h" />
+    <ClInclude Include="BasicShapes\Triangle.h" />
+    <ClInclude Include="ChineseChars.h" />
+    <ClInclude Include="DrawTask.h" />
+    <ClInclude Include="EasyVulkanAssert.h" />
+    <ClInclude Include="EasyVulkanConfig.h" />
+    <ClInclude Include="EasyVulkanConsole.h" />
+    <ClInclude Include="EasyVulkanFontManager.h" />
+    <ClInclude Include="EasyVulkanFpsCalculator.h" />
+    <ClInclude Include="EasyVulkanGlobal.h" />
+    <ClInclude Include="EasyVulkanMemoryUtility.h" />
+    <ClInclude Include="EasyVulkanPipeline.h" />
+    <ClInclude Include="EasyVulkanRenderer.h" />
+    <ClInclude Include="EasyVulkanShaderCompiler.h" />
+    <ClInclude Include="EasyVulkanTextureManager.h" />
+    <ClInclude Include="Text.h" />
+    <ClInclude Include="Matrix\EasyVulkanMatrixState.h" />
+    <ClInclude Include="Matrix\EasyVulkanMatrix.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="VkObject.h" />
+    <QtMoc Include="EasyVulkanWindow.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
+    <Import Project="$(QtMsBuild)\qt.targets" />
+  </ImportGroup>
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

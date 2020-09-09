@@ -1,0 +1,1 @@
+SyntaxError: ('cannot assign to literal', ('<string>', 1, 1, None))
